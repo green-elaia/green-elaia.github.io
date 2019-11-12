@@ -1,16 +1,21 @@
 # Site Settings
-title: Bulma Clean Theme
-tagline: Bulma Clean Theme
-email: your-email@domain.com
+theme: bulma-clean-theme
+title: Elaia's Dream Factory
+tagline: green elaia
+email: pharos.veritatis@gmail.com
 description: >
-  The demo site for Bulma Clean Theme, made for Jekyll and GitHub pages websites
-baseurl: "/bulma-clean-theme"
-url: "https://www.csrhymes.com"
+  green elaia Blog
+baseurl: 
+url: "https://green-elaia.github.io"
 permalink: pretty
-#favicon: /path/to/favicon.png
+favicon: /assets/img/favicon-32x32.png
 
-paginate: 5
+paginate: 2
 paginate_path: "/blog/page:num"
+
+# Configure the plugin here
+category_path: /category # <- default value
+category_layout: category.html # <- default value
 
 plugins:
   - jekyll-sitemap

@@ -1,23 +1,44 @@
-- name: Pages
+- name: Archives
   link: /#
   dropdown:
-    - name: Page With Sidebar
+    - name: Algorithm & Data Structure
       link: /page-1/
-    - name: Page No Sidebar
+    - name: Artificial Intelligence
       link: /page-2/
-    - name: Page With Menubar
-      link: /page-3/
-    - name: Page With Tabs
+    - name: Linear Algebra
+      #link: /page-3/
+      link: /blog/Hi
+    - name: Probability & Statistics
       link: /page-4/
-    - name: Page Without Footer
+    - name: Python
       link: /page-5/
-    - name: Page Without Hero
+    - name: Web
       link: /page-without-hero/
-    - name: Page With Contents
+    - name: Seminar & Conference
       link: /page-with-contents/
-    - name: Landing Page With Callouts
+    - name: Review Papers
       link: /landing/
+- name: About
+  link: /about/
 - name: Products
   link: /products/
 - name: Blog
   link: /blog/
+  dropdown:
+    - name: Algorithm & Data Structure
+      link: /page-1/
+    - name: Artificial Intelligence
+      link: /page-2/
+    - name: Linear Algebra
+      #link: /page-3/
+      link: /Hi/
+    - name: Probability & Statistics
+      link: /page-4/
+    - name: Python
+      link: /page-5/
+    - name: Web
+      link: /page-without-hero/
+    - name: Seminar & Conference
+      link: /page-with-contents/
+    - name: Review Papers
+      link: /landing/

@@ -10,7 +10,8 @@
         - name: Page Without Sidebar
           link: /page-2/
         - name: Page With Menubar
-          link: /page-3/
+          #link: /page-3/
+          link: /blog/
         - name: Page With Tabs
           link: /page-4/
         - name: Page Without Footer

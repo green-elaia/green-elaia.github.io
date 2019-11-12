@@ -1,7 +1,7 @@
 ---
 title: Page with menubar
 subtitle: Demo page with a menubar
-layout: page
+layout: blog
 show_sidebar: false
 menubar: example_menu
 ---
