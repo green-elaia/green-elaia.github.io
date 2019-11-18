@@ -26,19 +26,18 @@
   link: /blog/
   dropdown:
     - name: Algorithm & Data Structure
-      link: /page-1/
+      link: /AlgorithmDataStructure/
     - name: Artificial Intelligence
-      link: /page-2/
+      link: /AI/
     - name: Linear Algebra
-      #link: /page-3/
-      link: /Hi/
+      link: /LinearAlgebra/
     - name: Probability & Statistics
-      link: /page-4/
+      link: /ProbabilityStatistics/
     - name: Python
-      link: /page-5/
+      link: /Python/
     - name: Web
-      link: /page-without-hero/
+      link: /Web/
     - name: Seminar & Conference
-      link: /page-with-contents/
+      link: /SeminarConference/
     - name: Review Papers
-      link: /landing/
+      link: /ReviewPapers/

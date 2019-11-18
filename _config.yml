@@ -10,7 +10,7 @@ url: "https://green-elaia.github.io"
 permalink: pretty
 favicon: /assets/img/favicon-32x32.png
 
-paginate: 2
+paginate: 6
 paginate_path: "/blog/page:num"
 
 # Configure the plugin here
@@ -55,7 +55,7 @@ defaults:
       path: ""
       type: "posts"
     values:
-      author: "C.S. Rhymes"
+      author: "Green Elaia"
       layout: post
       image: https://via.placeholder.com/1200x800
       show_sidebar: true
