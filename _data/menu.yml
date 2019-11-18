@@ -1,0 +1,25 @@
+- label: Menu
+  items:
+    - name: Home
+      link: /
+    - name: About
+      link: /about/
+    - name: Blog
+      link: /#
+      items:
+        - name: Algorithm & Data Structure
+          link: /AlgorithmDataStructure/
+        - name: Artificial Intelligence
+          link: /AI/
+        - name: Linear Algebra
+          link: /LinearAlgebra/
+        - name: Probability & Statistics
+          link: /ProbabilityStatistics/
+        - name: Python
+          link: /Python/
+        - name: Web
+          link: /Web/
+        - name: Seminar & Conference
+          link: /SeminarConference/
+        - name: Review Papers
+          link: /ReviewPapers/

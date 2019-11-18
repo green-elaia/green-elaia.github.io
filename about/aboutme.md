@@ -1,7 +1,10 @@
 ---
 layout: post
-titles: aa
- 
+title: Park Young Jun
+subtitle: A.I. Engineer
+show_sidebar: false
+date: 2019-11-18
+author: Green Elaia
 ---
 
 ![TeXt Theme](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/TeXt-home.jpg)

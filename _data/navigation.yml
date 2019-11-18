@@ -1,29 +1,8 @@
-- name: Archives
-  link: /#
-  dropdown:
-    - name: Algorithm & Data Structure
-      link: /page-1/
-    - name: Artificial Intelligence
-      link: /page-2/
-    - name: Linear Algebra
-      #link: /page-3/
-      link: /blog/Hi
-    - name: Probability & Statistics
-      link: /page-4/
-    - name: Python
-      link: /page-5/
-    - name: Web
-      link: /page-without-hero/
-    - name: Seminar & Conference
-      link: /page-with-contents/
-    - name: Review Papers
-      link: /landing/
 - name: About
-  link: /about/
-- name: Products
-  link: /products/
+  link: /about/aboutme/
 - name: Blog
-  link: /blog/
+  link: /#
+  # link: /blog/
   dropdown:
     - name: Algorithm & Data Structure
       link: /AlgorithmDataStructure/

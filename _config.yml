@@ -4,10 +4,10 @@ title: Elaia's Dream Factory
 tagline: green elaia
 email: pharos.veritatis@gmail.com
 description: >
-  green elaia Blog
+  Green Elaia Blog
 baseurl: 
 url: "https://green-elaia.github.io"
-permalink: pretty
+# permalink: pretty
 favicon: /assets/img/favicon-32x32.png
 
 paginate: 6
@@ -41,7 +41,7 @@ sass:
   style: compressed
   source_dir: _sass
 
-#google_analytics: UA-code-here
+# google_analytics: UA-code-here
 
 defaults:
   -
@@ -57,13 +57,14 @@ defaults:
     values:
       author: "Green Elaia"
       layout: post
-      image: https://via.placeholder.com/1200x800
+      # post의 default image 설정임
+      # image: https://via.placeholder.com/1200x800 
       show_sidebar: true
 
 markdown: kramdown
 highlighter: rouge
 
-footer_menu: example_footer_menu
+footer_menu: footer_menu
 
 collections:
   products: 
