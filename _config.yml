@@ -14,7 +14,7 @@ paginate: 6
 paginate_path: "/blog/page:num"
 
 # Configure the plugin here
-category_path: /category # <- default value
+category_path: /category/ # <- default value
 category_layout: category.html # <- default value
 
 plugins:
