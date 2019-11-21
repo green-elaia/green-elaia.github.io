@@ -3,7 +3,7 @@
     - name: Home
       link: /
     - name: About
-      link: /about/
+      link: /about/aboutme/
     - name: Blog
       link: /#
       items:
