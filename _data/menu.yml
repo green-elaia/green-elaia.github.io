@@ -3,7 +3,7 @@
     - name: Home
       link: /
     - name: About
-      permalink: /about/aboutme/
+      link: /about/aboutme/
     - name: Blog
       link: /#
       items:
