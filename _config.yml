@@ -7,7 +7,7 @@ description: >
   Green Elaia Blog
 baseurl: 
 url: "https://green-elaia.github.io"
-# permalink: pretty
+permalink: pretty
 favicon: /assets/img/favicon-32x32.png
 
 paginate: 6
