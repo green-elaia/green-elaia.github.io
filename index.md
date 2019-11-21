@@ -1,6 +1,6 @@
 ---
-title: Bulma Clean Theme
-subtitle: This is the demo site for Bulma Clean Theme
+title: Green Elaia Blog
+subtitle: People really do shape their lives through their thoughts
 layout: page
 callouts: home_callouts
 show_sidebar: true
@@ -49,4 +49,3 @@ This demo site showcases the available page layout options.
 
 JetBrains have kindly provided an Open Source licence to aid in the future development of Bulma Clean Theme.
 
-[![JetBrains](img/jetbrains-variant-4.svg)](https://www.jetbrains.com/?from=bulma-clean-theme)
