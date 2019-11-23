@@ -1,4 +1,5 @@
 style: is-light
+height: is-small
 items:
   - title: Multiple page layouts
     subtitle: Including sidebar, menubar, tabs and callouts
