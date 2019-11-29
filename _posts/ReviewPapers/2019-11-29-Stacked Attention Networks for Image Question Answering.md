@@ -35,7 +35,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
     자연어만을 이용한 Question Answering과 달리, 컴퓨터비전 기술과 자연어처리 기술을 같이 사용하는 인공지능의 세부분야 중 하나이다. 어떤 이미지가 주어지고 이미지의 내용과 관련된 질문을 하면 기계는 질문에 대한 정답을 내놓는다. 
 
-    ![vqa sample](/assets/img/vqa sample image.PNG)*Image Question Answering sample  출처: https://github.com/facebookresearch/pythia*
+    ![vqa sample](/assets/img/vqa sample image.PNG){: width="100%" height="100%"}*Image Question Answering sample  출처: https://github.com/facebookresearch/pythia*
 
     
 
@@ -63,7 +63,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
     SANs는 image model, question model, stacked attention model로 구성된다.
 
-    ![SANs overall architecture](/assets/img/SANs overview.PNG)*SANs overall architecture  출처: 본 논문*
+    ![SANs overall architecture](/assets/img/SANs overview.PNG){: width="100%" height="100%"}*SANs overall architecture  출처: 본 논문*
 
     
 
@@ -85,7 +85,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
 - 실험 및 결과
 
-  ![SANs sample](/assets/img/SANs sample.PNG)*"What are sitting in the basket on a bicycle?" 질문에 대한 stacked attention model 각 layer에서의 결과 이미지  출처: 본 논문*
+  ![SANs sample](/assets/img/SANs sample.PNG){: width="100%" height="100%"}*"What are sitting in the basket on a bicycle?" 질문에 대한 stacked attention model 각 layer에서의 결과 이미지  출처: 본 논문*
 
   
 
