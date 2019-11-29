@@ -1,6 +1,6 @@
 - name: About
   link: /about/aboutme/
-- name: Blog
+- name: Archive
   link: /#
   # link: /blog/
   dropdown:
