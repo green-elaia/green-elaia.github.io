@@ -35,7 +35,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
     자연어만을 이용한 Question Answering과 달리, 컴퓨터비전 기술과 자연어처리 기술을 같이 사용하는 인공지능의 세부분야 중 하나이다. 어떤 이미지가 주어지고 이미지의 내용과 관련된 질문을 하면 기계는 질문에 대한 정답을 내놓는다. 
 
-    ![vqa sample](./assets/img/vqa sample image.PNG)*Image Question Answering sample  출처: https://github.com/facebookresearch/pythia*
+    ![vqa sample](/assets/img/vqa sample image.PNG)*Image Question Answering sample  출처: https://github.com/facebookresearch/pythia*
 
     
 
