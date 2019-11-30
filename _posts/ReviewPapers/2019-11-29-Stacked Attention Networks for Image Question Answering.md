@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Stacked Attention Networks for Image Question Answering
+title: [Review Paper] Stacked Attention Networks for Image Question Answering
 category: Review Papers
 tag: [Image QA, Stacked Attention]
 ---
@@ -9,15 +9,15 @@ tag: [Image QA, Stacked Attention]
 
 
 
-## 논문 정보
+## Paper information
 
  Yang, Zichao, et al. "Stacked attention networks for image question answering." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2016. 
 
 
 
-## 개요
+## Abstract
 
-Stacked Attention Networks를 고안하여 Image Question Answering Architecture에 적용하였음.
+Stacked Attention Networks를 고안하여 Image Question Answering Architecture에 Attention Mechanism을 적용하였음.
 
 Question의 semantic representation를 이용하여 정답과 관련된 이미지의 region을 찾아내는 것이 핵심.
 
@@ -27,7 +27,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
 
 
-## 서론
+## Introduction
 
 - 배경지식
 
@@ -35,9 +35,15 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
     자연어만을 이용한 Question Answering과 달리, 컴퓨터비전 기술과 자연어처리 기술을 같이 사용하는 인공지능의 세부분야 중 하나이다. 어떤 이미지가 주어지고 이미지의 내용과 관련된 질문을 하면 기계는 질문에 대한 정답을 내놓는다. 
 
-    ![vqa sample](/assets/img/vqa sample image.PNG){: width="100%" height="100%"}*Image Question Answering sample  출처: https://github.com/facebookresearch/pythia*
+    ![vqa sample](/assets/img/vqa sample image.PNG){: width="100%" height="100%"}*Fig1. Image Question Answering sample*
 
-    
+  - Image Captioning
+
+    어떤 이미지가 주어지면 그 이미지에 대한 자연어 설명을 만들어내는 것을 말한다. CNN으로 high level image feature vector를 추출하여 RNN에 input으로 넣으면 자연어 설명 텍스트가 output으로 나온다.
+
+  - Attention Mechanism
+
+    image captioning과 machine translation에서 활용되는 메커니즘이다. image captioning에서는 이미지의 특정부분에 집중하여 더 자세하게 이미지를 묘사하는 데에 쓰이고, machine translation에서는 어떤 단어를 번역할 때 그 단어에 주목하여 번역이 진행되도록 하는 데 쓰인다.
 
   
 
@@ -55,7 +61,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
 
 
-## 본론
+## Body
 
 - Stacked Attention Networks
 
@@ -63,7 +69,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
     SANs는 image model, question model, stacked attention model로 구성된다.
 
-    ![SANs overall architecture](/assets/img/SANs overview.PNG){: width="100%" height="100%"}*SANs overall architecture  출처: 본 논문*
+    ![SANs overall architecture](/assets/img/SANs overview.PNG){: width="100%" height="100%"}*Fig2. SANs overall architecture*
 
     
 
@@ -71,11 +77,58 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
   - Image model
 
-    CNN을 사용하여 이미지에서 high level image representations를 추출한다. 이미지에서 14 x 14 개의 region을 각각 feature vector 형태로 추출한다.
+    CNN을 사용하여 이미지에서 high level image representations를 추출한다. 먼저 이미지를 448 x 448 pixels로 rescale을 하고 이미지에서 14 x 14 개의 region을 각각 512 차원의 feature vector 형태로 추출하는데, spatial information을 가지고 있는 last pooling layer에서 가지고 온다. 
+
+    ![image model](/assets/img/image model.png)*Fig3. CNN based image model*
+
+    마지막으로 single layer perceptron을 통과시켜 각 image feature vector를 question vector의 dimension과 동일하도록 변환시켜준다.
+    $$
+    v_I = tanh(W_I f_I + b_I)
+    $$
+    *f<sub>I</sub>*는 image feature matrix
+
+    
 
   - Question model
 
-    해당 논문에서는 CNN을 이용한 방식과 LSTM을 이용한 방식 두가지를 실험한다. 이 두 네트워크를 이용하여 질문의 semantic feature vector를 추출한다.
+    해당 논문에서는 LSTM을 이용한 방식과 CNN을 이용한 방식 두가지를 실험한다. 이 두 네트워크를 이용하여 질문의 semantic feature vector를 추출한다.
+
+    - LSTM based question model
+
+      ![lstm question model](/assets/img/lstm question model.png)*LSTM based question model*
+
+      LSTM은 sequence의 state를 저장하는 memory cell unit을 갖는다. LSTM은 word vector를 input으로 받아 memory cell *c<sub>t</sub>* 를 업데이트 시키고 hidden state *h<sub>t</sub>*를 output으로 내놓는다. memory cell state를 업데이트하는 과정에서 gate mechanism을 이용하는데 forget gate *f<sub>t</sub>* , input gate *i<sub>t</sub>* , output gate *o<sub>t</sub>* 3종류가 있다. 
+
+      forget gate *f<sub>t</sub>* 는 전 단계의 *c<sub>t-1</sub>* 의 정보를 memory cell에 얼마나 반영할 것인가와 관련되고,
+
+      input gate *i<sub>t</sub>* 는 현재 input으로 들어온 *x<sub>t</sub>* 의 정보를 memory cell에 얼마나 반영할 것인가와 관련되며,
+
+      output gate *o<sub>t</sub>* 는 현재 memory cell의 정보를 얼마나 hidden state로 내보낼지와 관련된다.
+      $$
+      c_t = f_t \odot c_{t-1} + i_t \odot tanh(W_{xc}x_t + W_{hc}h_{t-1} + b_c)
+      $$
+
+      $$
+      h_t = o_t \odot tanh(c_t)
+      $$
+
+      이제 question vector를 생성하는 과정을 살펴보자. 먼저 question의 각 단어들을 자신의 위치에 맞는 one-hot vector *q<sub>t</sub>* 로 표현한다 (*t*는 word의 position). *q<sub>t</sub>* 는 embedding 과정을 거쳐 vector space의 embedding vector *x<sub>t</sub>* 로 변환되고 이것이 LSTM의 input으로 사용된다. 최종적으로 LSTM의 output으로 나온 *h<sub>T</sub>* (T는 마지막 word의 position)가 question의 representation vector *v<sub>Q</sub>* 가 된다.
+
+    $$
+    x_t = W_e q_{t}
+    $$
+
+    $$
+    h_t = LSTM(x_t)
+    $$
+
+    $$
+    v_Q = h_T
+    $$
+
+    - CNN based question model
+
+      
 
   - Stacked Attention model
 
@@ -85,12 +138,18 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
 - 실험 및 결과
 
-  ![SANs sample](/assets/img/SANs sample.PNG){: width="100%" height="100%"}*"What are sitting in the basket on a bicycle?" 질문에 대한 stacked attention model 각 layer에서의 결과 이미지  출처: 본 논문*
+  ![SANs sample](/assets/img/SANs sample.PNG){: width="100%" height="100%"}*Fig4. "What are sitting in the basket on a bicycle?"에 대한 stacked attention model 각 layer에서의 결과 이미지*
 
   
 
   
 
-## 결론
+## Conclusion
 
 
+
+### Reference
+
+[Fig1] https://github.com/facebookresearch/pythia
+
+[Fig2~4] Yang, Zichao, et al. "Stacked attention networks for image question answering." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2016. 
