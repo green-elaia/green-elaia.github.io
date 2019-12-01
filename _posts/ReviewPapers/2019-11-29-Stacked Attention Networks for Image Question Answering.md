@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [Review Paper] Stacked Attention Networks for Image Question Answering
+title: Stacked Attention Networks for Image Question Answering
 category: Review Papers
 tag: [Image QA, Stacked Attention]
 ---
