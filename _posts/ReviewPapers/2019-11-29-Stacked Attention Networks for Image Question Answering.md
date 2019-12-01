@@ -79,7 +79,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
     CNN을 사용하여 이미지에서 high level image representations를 추출한다. 먼저 이미지를 448 x 448 pixels로 rescale을 하고 이미지에서 14 x 14 개의 region을 각각 512 차원의 feature vector 형태로 추출하는데, spatial information을 가지고 있는 last pooling layer에서 가지고 온다. 
 
-    ![image model](/assets/img/image model.png)*Fig3. CNN based image model*
+    ![image model](/assets/img/image model.PNG){: width="70%" height="70%"}*Fig3. CNN based image model*
 
     마지막으로 single layer perceptron을 통과시켜 각 image feature vector를 question vector의 dimension과 동일하도록 변환시켜준다.
     $$
@@ -95,7 +95,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
     - LSTM based question model
 
-      ![lstm question model](/assets/img/lstm question model.png)*Fig4. LSTM based question model*
+      ![lstm question model](/assets/img/lstm question model.PNG){: width="70%" height="70%"}*Fig4. LSTM based question model*
 
       LSTM은 sequence의 state를 저장하는 memory cell unit을 갖는다. LSTM은 word vector를 input으로 받아 memory cell *c<sub>t</sub>* 를 업데이트 시키고 hidden state *h<sub>t</sub>*를 output으로 내놓는다. memory cell state를 업데이트하는 과정에서 gate mechanism을 이용하는데 forget gate *f<sub>t</sub>* , input gate *i<sub>t</sub>* , output gate *o<sub>t</sub>* 3종류가 있다. 
 
@@ -128,7 +128,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
     - CNN based question model
 
-      ![cnn question model](/assets/img/cnn question model.png)*Fig5. CNN based question model*
+      ![cnn question model](/assets/img/cnn question model.PNG){: width="70%" height="70%"}*Fig5. CNN based question model*
       
       question의 각 단어들을 자신의 위치에 맞게 one-hot vector *q<sub>t</sub>* 로 표현하고 이것을 embedding을 시켜 word embedding vector *x<sub>t</sub>* 로 변환시킨다. 그리고 word embedding vector를 concatenate 하여 question vector를 얻는다.
       $$
