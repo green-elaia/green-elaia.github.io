@@ -9,7 +9,7 @@ tag: [Image QA, Stacked Attention]
 
 
 
-## Paper information
+## Paper Information
 
  Yang, Zichao, et al. "Stacked attention networks for image question answering." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2016. 
 
@@ -29,7 +29,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
 ## Introduction
 
-- 배경지식
+- Background Knowledge
 
   - Image Question Answering
 
@@ -47,7 +47,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
   
 
-- 연구동기
+- Research Motivation
 
   최근의 Image QA model들은 인공신경망을 이용하여 연구되고 있다. 
 
@@ -95,7 +95,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
     - LSTM based question model
 
-      ![lstm question model](/assets/img/lstm question model.png)*LSTM based question model*
+      ![lstm question model](/assets/img/lstm question model.png)*Fig4. LSTM based question model*
 
       LSTM은 sequence의 state를 저장하는 memory cell unit을 갖는다. LSTM은 word vector를 input으로 받아 memory cell *c<sub>t</sub>* 를 업데이트 시키고 hidden state *h<sub>t</sub>*를 output으로 내놓는다. memory cell state를 업데이트하는 과정에서 gate mechanism을 이용하는데 forget gate *f<sub>t</sub>* , input gate *i<sub>t</sub>* , output gate *o<sub>t</sub>* 3종류가 있다. 
 
@@ -128,6 +128,29 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
     - CNN based question model
 
+      ![cnn question model](/assets/img/cnn question model.png)*Fig5. CNN based question model*
+      
+      question의 각 단어들을 자신의 위치에 맞게 one-hot vector *q<sub>t</sub>* 로 표현하고 이것을 embedding을 시켜 word embedding vector *x<sub>t</sub>* 로 변환시킨다. 그리고 word embedding vector를 concatenate 하여 question vector를 얻는다.
+      $$
+      x_{1:T} = [x_1, x_2, ..., x_T]
+      $$
+      이제 question vector에 3가지 filter를 적용하여 convolution 연산을 진행한다. 3가지 filter의 크기는 각각 1 (unigram), 2 (bigram), 3 (trigram)이다. convolution 연산의 결과는 feature map *h<sub>c</sub>*  (c는 filter size)가 되며, 이것에 max-pooling을 적용하여 'tilde *h<sub>c</sub>*' 를 구한다. filter size c에 따라 3개의 'tilde *h<sub>c</sub>*'가 구해지면 이것들을 concatenate하여 하나의 question feature representation vector *v<sub>Q</sub>* 로 만들어준다. 
+      $$
+      h_c = [h_{c,1}, h_{c,2}, ..., h_{c,T-c+1}]
+      $$
+      
+      $$
+      \tilde{h_c} = max[h_{c,1}, h_{c,2}, ..., h_{c,T-c+1}]
+      $$
+      
+      $$
+      h = [\tilde{h_1}, \tilde{h_2}, \tilde{h_3}]
+      $$
+      
+      $$
+      v_Q = h
+      $$
+      
       
 
   - Stacked Attention model
@@ -136,9 +159,9 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
   
 
-- 실험 및 결과
+- Experiments and Results
 
-  ![SANs sample](/assets/img/SANs sample.PNG){: width="100%" height="100%"}*Fig4. "What are sitting in the basket on a bicycle?"에 대한 stacked attention model 각 layer에서의 결과 이미지*
+  ![SANs sample](/assets/img/SANs sample.PNG){: width="100%" height="100%"}*Fig6. "What are sitting in the basket on a bicycle?"에 대한 stacked attention model 각 layer에서의 결과 이미지*
 
   
 
@@ -152,4 +175,4 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
 [Fig1] https://github.com/facebookresearch/pythia
 
-[Fig2~4] Yang, Zichao, et al. "Stacked attention networks for image question answering." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2016. 
+[Fig2~6] Yang, Zichao, et al. "Stacked attention networks for image question answering." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2016. 
