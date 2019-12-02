@@ -16,6 +16,8 @@ paginate_path: "/blog/page:num"
 category_path: /category/ # <- default value
 category_layout: category.html # <- default value
 
+mathjax: true
+
 plugins:
   - jekyll-sitemap
   - jekyll-paginate
