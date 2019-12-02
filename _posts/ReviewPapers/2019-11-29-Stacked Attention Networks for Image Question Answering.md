@@ -84,7 +84,6 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
   v_I = tanh(W_I f_I + b_I)
   $$
   
-
 - Question model
 
   해당 논문에서는 LSTM을 이용한 방식과 CNN을 이용한 방식 두가지를 실험한다. 이 두 네트워크를 이용하여 질문의 semantic feature vector를 추출한다.
@@ -93,7 +92,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
   - LSTM based question model
 
-    ![lstm question model](/assets/img/lstm question model.PNG){: width="80%" height="80%"}*Fig4. LSTM based question model*
+    ![lstm question model](/assets/img/lstm question model.PNG){: width="100%" height="100%"}*Fig4. LSTM based question model*
 
     LSTM은 sequence의 state를 저장하는 memory cell unit을 갖는다. LSTM은 word vector를 input으로 받아 memory cell *c<sub>t</sub>* 를 업데이트 시키고 hidden state *h<sub>t</sub>*를 output으로 내놓는다. memory cell state를 업데이트하는 과정에서 gate mechanism을 이용하는데 forget gate *f<sub>t</sub>* , input gate *i<sub>t</sub>* , output gate *o<sub>t</sub>* 3종류가 있다. 
 
@@ -126,7 +125,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
   - CNN based question model
 
-    ![cnn question model](/assets/img/cnn question model.PNG){: width="80%" height="80%"}*Fig5. CNN based question model*
+    ![cnn question model](/assets/img/cnn question model.PNG){: width="100%" height="100%"}*Fig5. CNN based question model*
     
     question의 각 단어들을 자신의 위치에 맞게 one-hot vector *q<sub>t</sub>* 로 표현하고 이것을 embedding을 시켜 word embedding vector *x<sub>t</sub>* 로 변환시킨다. 그리고 word embedding vector를 concatenate 하여 question vector를 얻는다.
     $$
