@@ -2,6 +2,7 @@
 layout: post
 title: Stacked Attention Networks for Image Question Answering
 category: Review Papers
+use_math: true
 tag: [Image QA, Stacked Attention]
 ---
 
@@ -80,10 +81,12 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
   ![image model](/assets/img/image model.PNG){: width="70%" height="70%"}*Fig3. CNN based image model*
 
   마지막으로 single layer perceptron을 통과시켜 각 image feature vector를 question vector의 dimension과 동일하도록 변환시켜준다. *f<sub>I</sub>* 는 변환 전 image feature matrix, *v<sub>I</sub>* 는 변환 후 image feature matrix.
+  
+  
   $$
   v_I = tanh(W_I f_I + b_I)
   $$
-  
+
 - Question model
 
   해당 논문에서는 LSTM을 이용한 방식과 CNN을 이용한 방식 두가지를 실험한다. 이 두 네트워크를 이용하여 질문의 semantic feature vector를 추출한다.
@@ -101,14 +104,16 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
     input gate *i<sub>t</sub>* 는 현재 input으로 들어온 *x<sub>t</sub>* 의 정보를 memory cell에 얼마나 반영할 것인가와 관련되며,
 
     output gate *o<sub>t</sub>* 는 현재 memory cell의 정보를 얼마나 hidden state로 내보낼지와 관련된다.
+    
+    
     $$
-    c_t = f_t \odot c_{t-1} + i_t \odot tanh(W_{xc}x_t + W_{hc}h_{t-1} + b_c)
+  c_t = f_t \odot c_{t-1} + i_t \odot tanh(W_{xc}x_t + W_{hc}h_{t-1} + b_c)
     $$
-
+    
     $$
-    h_t = o_t \odot tanh(c_t)
+  h_t = o_t \odot tanh(c_t)
     $$
-
+    
     이제 question vector를 생성하는 과정을 살펴보자. 먼저 question의 각 단어들을 자신의 위치에 맞는 one-hot vector *q<sub>t</sub>* 로 표현한다 (*t*는 word의 position). *q<sub>t</sub>* 는 embedding 과정을 거쳐 vector space의 embedding vector *x<sub>t</sub>* 로 변환되고 이것이 LSTM의 input으로 사용된다. 최종적으로 LSTM의 output으로 나온 *h<sub>T</sub>* (T는 마지막 word의 position)가 question의 representation vector *v<sub>Q</sub>* 가 된다.
 
   $$
@@ -128,10 +133,16 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
     ![cnn question model](/assets/img/cnn question model.PNG){: width="100%" height="100%"}*Fig5. CNN based question model*
     
     question의 각 단어들을 자신의 위치에 맞게 one-hot vector *q<sub>t</sub>* 로 표현하고 이것을 embedding을 시켜 word embedding vector *x<sub>t</sub>* 로 변환시킨다. 그리고 word embedding vector를 concatenate 하여 question vector를 얻는다.
+    
+    
     $$
     x_{1:T} = [x_1, x_2, ..., x_T]
     $$
-    이제 question vector에 3가지 filter를 적용하여 convolution 연산을 진행한다. 3가지 filter의 크기는 각각 1 (unigram), 2 (bigram), 3 (trigram)이다. convolution 연산의 결과는 feature map *h<sub>c</sub>*  (c는 filter size)가 되며, 이것에 max-pooling을 적용하여 'tilde *h<sub>c</sub>*' 를 구한다. filter size c에 따라 3개의 'tilde *h<sub>c</sub>*'가 구해지면 이것들을 concatenate하여 하나의 question feature representation vector *v<sub>Q</sub>* 로 만들어준다. 
+    
+    
+    이제 question vector에 3가지 filter를 적용하여 convolution 연산을 진행한다. 3가지 filter의 크기는 각각 1 (unigram), 2 (bigram), 3 (trigram)이다. convolution 연산의 결과는 feature map *h<sub>c</sub>*  (c는 filter size)가 되며, 이것에 max-pooling을 적용하여 'tilde *h<sub>c</sub>*' 를 구한다. filter size c에 따라 3개의 'tilde *h<sub>c</sub>*'가 구해지면 이것들을 concatenate하여 하나의 question feature representation vector *v<sub>Q</sub>* 로 만들어준다.
+    
+    
     $$
     h_c = [h_{c,1}, h_{c,2}, ..., h_{c,T-c+1}]
     $$
@@ -157,6 +168,8 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
   이를 해결하기 위해 SANs에서는 multi-step 추론을 적용하여 점진적으로 정답과 관련된 region을 찾도록 했다. 매 단계를 거칠 때마다 정답과 무관한 regions을 제거하여 정답과 관련되는 이미지의 region을 찾도록 한 것이다.
   
   SANs는 여러개의 attention layer를 stack의 형태로 쌓고, 각 attention layer에서는 전 단계의 attention layer에서 넘어온 question vector을 가지고 이와 관련된 image feature vector를 찾도록 했다. 그리고 question vector와 image feature vector를 결합하여 좀더 정제된 question vector를 만들어 그 다음 단계의 attention layer에 전달한다. 가장 마지막 단계의 attention layer에는 정답과 제일 관련이 높은 image region의 정보를 담은 attention distribution이 question vector에 존재한다. 이것을 image feature vector와 결합하여 정답을 찾는 것에 사용한다.
+  
+  
   $$
   h_A = tanh(W_{I,A}v_I \oplus (W_{Q,A}v_Q + b_A))
   $$
@@ -166,6 +179,8 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
   $$
   
   attention layer에 image feature matrix *v<sub>I</sub>* 와 question vector *v<sub>Q</sub>* 을 입력하면 single layer neural network와 softmax function을 통과하여 이미지의 regions에 대한 attention distribution이 출력된다. 즉, *p<sub>I</sub>* 는 주어진 question vector *v<sub>Q</sub>* 에 대한 image regions의 attention weight라고 할 수 있다.
+  
+  
   $$
   \tilde{v_I} = \sum_i p_iv_i
   $$

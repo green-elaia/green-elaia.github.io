@@ -16,8 +16,6 @@ paginate_path: "/blog/page:num"
 category_path: /category/ # <- default value
 category_layout: category.html # <- default value
 
-mathjax: true
-
 plugins:
   - jekyll-sitemap
   - jekyll-paginate
@@ -62,8 +60,13 @@ defaults:
       # image: https://via.placeholder.com/1200x800 
       show_sidebar: true
 
+# Conversion
 markdown: kramdown
 highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
 
 footer_menu: footer_menu
 
