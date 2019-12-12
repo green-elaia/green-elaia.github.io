@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Park Young Jun
-subtitle: A.I. Engineer
+subtitle: Machine Learning Engineer
 show_sidebar: false
 date: 2019-11-18
 author: Green Elaia
