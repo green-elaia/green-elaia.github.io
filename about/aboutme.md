@@ -10,6 +10,8 @@ callouts: home_callouts
 
 개인 소개글 작성: 반갑습니다. 저는 사람과 인공지능이 협업하는 사회를 꿈꾸는 머신러닝 엔지니어 박영준입니다. 저는 on-device AI와 explanable AI에 관심을 갖고 있습니다.
 
+==학부에서 진행했던 모든 프로젝트 정리하기
+
 ![TeXt Theme](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/TeXt-home.jpg)
 
 TeXt is a super customizable Jekyll theme for personal site, team site, blog, project, documentation, etc. Similar to iOS 11 style, it has large and prominent titles, round buttons and cards.
