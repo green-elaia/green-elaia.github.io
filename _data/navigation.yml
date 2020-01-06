@@ -1,8 +1,8 @@
 - name: About
   link: /about/aboutme/
-- name: Archive
-  link: /#
-  # link: /blog/
+- name: Archives
+  # link: /#
+  link: /blog/
   dropdown:
     - name: Algorithm & Data Structure
       link: /AlgorithmDataStructure/

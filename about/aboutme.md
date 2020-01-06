@@ -4,7 +4,7 @@ title: Park Young Jun
 subtitle: Machine Learning Engineer
 show_sidebar: false
 date: 2019-11-18
-author: Green Elaia
+author: YoungJun Park
 callouts: home_callouts
 ---
 

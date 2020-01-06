@@ -4,8 +4,8 @@
       link: /
     - name: About
       link: /about/aboutme/
-    - name: Blog
-      link: /#
+    - name: Archives
+      link: /blog/
       items:
         - name: Algorithm & Data Structure
           link: /AlgorithmDataStructure/

@@ -1,15 +1,15 @@
 # Site Settings
-title: Elaia's Dream Factory
+title: 
 tagline: green elaia
 email: pharos.veritatis@gmail.com
 description: >
-  Green Elaia Blog
+  YoungJun Park Blog
 baseurl: 
 url: "https://green-elaia.github.io"
 permalink: pretty
 favicon: /assets/img/favicon-32x32.png
 
-paginate: 6
+paginate: 5
 paginate_path: "/blog/page:num"
 
 # Configure the plugin here
@@ -54,7 +54,7 @@ defaults:
       path: ""
       type: "posts"
     values:
-      author: "Green Elaia"
+      author: "YoungJun Park"
       layout: post
       # post의 default image 설정임
       # image: https://via.placeholder.com/1200x800 

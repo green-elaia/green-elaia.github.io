@@ -6,6 +6,21 @@ layout: default
     {% assign contentsTitle = page.toc_title | default: 'Contents' %}
     {% include toc.html html=content class='menu-list' h_min=2 h_max=3 contents_title=contentsTitle %}
 {% endif %}
+
 <div class="content">
     {{ content }}
+</div>
+
+<div class="columns is-multiline">
+    <div class="column is-12">
+        {% include pagination.html %}
+    </div>
+    {% for post in paginator.posts %}
+    <div class="column is-12">
+        {% include post-card.html %}
+    </div>
+    {% endfor %}
+    <div class="column is-12">
+            {% include pagination.html %}
+    </div>
 </div>
