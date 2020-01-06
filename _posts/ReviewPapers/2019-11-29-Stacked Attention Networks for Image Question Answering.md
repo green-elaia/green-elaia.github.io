@@ -4,6 +4,7 @@ title: Stacked Attention Networks for Image Question Answering
 category: Review Papers
 use_math: true
 tag: [Image QA, Stacked Attention]
+show_sidebar: false
 ---
 
 # Stacked Attention Networks for Image Question Answering
