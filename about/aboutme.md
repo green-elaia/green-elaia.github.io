@@ -12,6 +12,14 @@ callouts: home_callouts
 
 ==학부에서 진행했던 모든 프로젝트 정리하기
 
+paper
+
+유튜브 데이터 마이닝을 통한 영상 소비자들의 관심주제 분석: 유아동 콘텐츠의 사례
+
+**박영준**, 송용백, 이승윤, 이준송
+
+대한산업공학회 추계 학술대회 2019
+
 ![TeXt Theme](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/TeXt-home.jpg)
 
 TeXt is a super customizable Jekyll theme for personal site, team site, blog, project, documentation, etc. Similar to iOS 11 style, it has large and prominent titles, round buttons and cards.
