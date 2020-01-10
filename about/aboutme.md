@@ -8,6 +8,10 @@ author: YoungJun Park
 callouts: home_callouts
 ---
 
+## 개인사진
+
+
+
 ## 개인 소개글 작성 (나를 나타내는 한줄 / 가치관, 또는 무엇이 하고 싶은지 / 흥미있는 산업분야, 학문분야)
 
 : 반갑습니다. 저는 사람과 인공지능이 협업하는 사회를 꿈꾸는 머신러닝 엔지니어 박영준입니다. 저는 on-device AI와 explanable AI에 관심을 갖고 있습니다.
@@ -54,5 +58,5 @@ callouts: home_callouts
 
 ## Work Experiments
 
-딥비전스 인턴
+dls, 딥비전스 인턴
 
