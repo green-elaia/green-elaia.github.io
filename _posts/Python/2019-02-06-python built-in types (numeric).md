@@ -1,9 +1,9 @@
 ---
 layout: post
-title: python built-in types (numeric, sequence, set, mapping)
+title: python built-in types (numeric)
 category: Python
 use_math: true
-tag: [int, float, complex, list, tuple, set, dictionary]
+tag: [int, float, complex]
 show_sidebar: false
 ---
 
@@ -14,6 +14,8 @@ show_sidebar: false
 파이썬 numeric types에는 정수(int), 부동소수점(float), 복소수(complex)가 있다.
 
 int 타입은 4바이트, float 타입은 8바이트 (cf. C, Java의 float는 4바이트), complex 타입은 실수부, 허수부 각각 8바이트의 크기를 갖는다.
+
+<br/>
 
 <br/>
 
@@ -41,7 +43,9 @@ a = 3
 
 <br/>
 
-int(문자열, 밑): 어떤 문자열을 10진법 정수로 변환시키거나 다른 진법의 문자열을 10진법 정수로 변환시키는 함수. '밑'의 범위를 벗어나는 '문자열'을 입력할 경우 ValueError 예외가 발생한다.
+<br/>
+
+`int`(*문자열*, *밑*) 함수: 어떤 문자열을 10진법 정수로 변환시키거나 다른 진법의 문자열을 10진법 정수로 변환시키는 함수. '밑'의 범위를 벗어나는 '문자열'을 입력할 경우 ValueError 예외가 발생한다.
 
 ```python
 >>> a = int('123')
@@ -86,6 +90,8 @@ ValueError: invalid literal for int() with base 2: '12'
 
 <br/>
 
+<br/>
+
 부동소수점끼리의 비교는 조심해야 한다.
 
 부동소수점은 이진수 분수(binary fraction)로 표현된다. 그래서 2진수는 정확히 10진수로 표현이 가능하지만, 10진수는 2진수로 정확히 표현할 수 없는 경우가 발생한다 (10진수 0.1 = 2진수 0.00110011001100...) . 이런 이유 때문에 다음과 같은 결과가 발생한다.
@@ -116,6 +122,8 @@ Traceback (most recent call last):
     raise self.failureException(msg)
 AssertionError: 0.6000000000000001 != 0.7 within 7 places (0.09999999999999987 difference)
 ```
+
+<br/>
 
 <br/>
 
