@@ -7,15 +7,11 @@ tag: [Image QA, Stacked Attention]
 show_sidebar: false
 ---
 
-# Stacked Attention Networks for Image Question Answering
-
-
-
 ## Paper Information
 
  Yang, Zichao, et al. "Stacked attention networks for image question answering." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2016. 
 
-
+<br/>
 
 ## Abstract
 
@@ -27,7 +23,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
 해당 논문에서는 4개의 Dataset (DAQUAR-ALL, DAQUAR-REDUCED, COCO-QA, VQA)으로 실험을 진행하였고, 결과적으로는 당시의 state-of-the-art approaches에 비해 적게는 0.2% 많게는 9.7%의 성능향상을 보여줌.
 
-
+<br/>
 
 ## Introduction
 
@@ -47,7 +43,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
     image captioning과 machine translation에서 활용되는 메커니즘이다. image captioning에서는 이미지의 특정부분에 집중하여 더 자세하게 이미지를 묘사하는 데에 쓰이고, machine translation에서는 어떤 단어를 번역할 때 그 단어에 주목하여 번역이 진행되도록 하는 데 쓰인다.
 
-  
+  <br/>
 
 - Research Motivation
 
@@ -61,7 +57,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
   해당 논문에서 제안한 이 방법론을 Stacked Attention Networks (SANs)라 한다.
 
-
+<br/>
 
 ## Stacked Attention Networks (SANs)
 
@@ -71,7 +67,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
 
   ![SANs overall architecture](/assets/img/SANs overview.PNG){: width="100%" height="100%"}*Fig2. SANs overall architecture*
 
-  
+  <br/>
 
 - Image model
 
@@ -82,11 +78,12 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
   ![image model](/assets/img/image model.PNG){: width="70%" height="70%"}*Fig3. CNN based image model*
 
   마지막으로 single layer perceptron을 통과시켜 각 image feature vector를 question vector의 dimension과 동일하도록 변환시켜준다. *f<sub>I</sub>* 는 변환 전 image feature matrix, *v<sub>I</sub>* 는 변환 후 image feature matrix.
-  
-  
+
+
   $$
   v_I = tanh(W_I f_I + b_I)
   $$
+  <br/>
 
 - Question model
 
@@ -129,6 +126,8 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
   v_Q = h_T
   $$
 
+  <br/>
+
   - CNN based question model
 
     ![cnn question model](/assets/img/cnn question model.PNG){: width="100%" height="100%"}*Fig5. CNN based question model*
@@ -161,6 +160,8 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
     $$
     
     
+
+  <br/>
 
 - Stacked Attention model
 
@@ -196,7 +197,7 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
   
   ![SANs sample](/assets/img/SANs sample.PNG){: width="100%" height="100%"}*Fig6. "What are sitting in the basket on a bicycle?"에 대한 stacked attention model 각 layer에서의 결과 이미지*
   
-  
+  <br/>
 
 ### Reference
 
