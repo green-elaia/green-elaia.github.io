@@ -80,10 +80,12 @@ Image QA의 정답 추론과정은 여러단계를 거쳐 이뤄지는데, 해�
   마지막으로 single layer perceptron을 통과시켜 각 image feature vector를 question vector의 dimension과 동일하도록 변환시켜준다. *f<sub>I</sub>* 는 변환 전 image feature matrix, *v<sub>I</sub>* 는 변환 후 image feature matrix.
 
 
-  $$
-  v_I = tanh(W_I f_I + b_I)
-  $$
-  <br/>
+$$
+v_I = tanh(W_I f_I + b_I)
+$$
+  
+
+<br/>
 
 - Question model
 
