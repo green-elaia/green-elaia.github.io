@@ -78,16 +78,16 @@ ValueError: invalid literal for int() with base 2: '12'
 
 ```python
 >>> type(float(123))
-< class 'float' >
+"<class 'float'>"
 >>> type(float('123'))
-< class 'float' >
+"<class 'float'>"
 
 >>> type(complex(12))
-< class 'complex' >
+"<class 'complex'>"
 >>> type(complex(12.3))
-< class 'complex' >
+"<class 'complex'>"
 >>> type(complex('12+3j'))
-< class 'complex' >
+"<class 'complex'>"
 ```
 
 <br/>
@@ -296,7 +296,7 @@ array([[0., 0., 0., 0.],
        [0., 0., 0., 0.],
        [0., 0., 0., 0.]])
 >>> type(g1)
-< class 'numpy.ndarray' >
+"<class 'numpy.ndarray'>"
 >>> g2 = np.ones(shape=(3,4), dtype=float)  # 실수 타입으로 1을 채운 3 by 4 넘파이 배열 생성
 >>> g2
 array([[1., 1., 1., 1.],
