@@ -45,7 +45,7 @@ a = 3
 
 <br/>
 
-##### `int`(*문자열*, *밑*) 함수
+##### int(*문자열*, *밑* ) 함수
 
 : 어떤 문자열을 10진법 정수로 변환시키거나 다른 진법의 문자열을 10진법 정수로 변환시키는 함수. '밑'의 범위를 벗어나는 '문자열'을 입력할 경우 ValueError 예외가 발생한다.
 
@@ -54,7 +54,7 @@ a = 3
 >>> a
 123
 >>> type(a)
-<class 'int'>
+< class 'int' >
 
 # 2진법 '100'를 10진법 정수로 변환
 >>> int('100',2)
@@ -78,16 +78,16 @@ ValueError: invalid literal for int() with base 2: '12'
 
 ```python
 >>> type(float(123))
-<class 'float'>
+< class 'float' >
 >>> type(float('123'))
-<class 'float'>
+< class 'float' >
 
 >>> type(complex(12))
-<class 'complex'>
+< class 'complex' >
 >>> type(complex(12.3))
-<class 'complex'>
+< class 'complex' >
 >>> type(complex('12+3j'))
-<class 'complex'>
+< class 'complex' >
 ```
 
 <br/>
@@ -109,7 +109,7 @@ False
 False
 ```
 
-이러한 문제를 해결하기 위해 특정 정밀도까지만을 비교하는 방식을 취할 수 있는데, unittest 모듈의 `assertNotAlmostEqual`(*first*, *second*, *places=7*, *msg=None*, *delta=None*) 함수 등이 있다. 
+이러한 문제를 해결하기 위해 특정 정밀도까지만을 비교하는 방식을 취할 수 있는데, unittest 모듈의 assertNotAlmostEqual(*first*, *second*, *places=7*, *msg=None*, *delta=None*) 함수 등이 있다. 
 
 ```python
 >>> import unittest
@@ -199,7 +199,7 @@ Fraction(5, 4)
 
 ##### decimal 모듈
 
-정확한 10진법의 부동소수점 숫자가 필요한 경우, 부동소수점 불변 타입인 `decimal.Decimal`(*문자열 또는 정수*)를 사용할 수 있다. 앞서 살펴본 것과 같이 10진법 0.1은 정확하게 2진법으로 표현할 수가 없다. 하지만 `decimal.Decimal` 객체를 쓰면 10진법 0.1을 정확하게 2진법으로 표현할 수 있다. 즉, 정확도가 필요한 경우 `decimal` 모듈을 사용하는 것이 좋다.
+정확한 10진법의 부동소수점 숫자가 필요한 경우, 부동소수점 불변 타입인 decimal.Decimal(*문자열 또는 정수*)를 사용할 수 있다. 앞서 살펴본 것과 같이 10진법 0.1은 정확하게 2진법으로 표현할 수가 없다. 하지만 decimal.Decimal 객체를 쓰면 10진법 0.1을 정확하게 2진법으로 표현할 수 있다. 즉, 정확도가 필요한 경우 decimal 모듈을 사용하는 것이 좋다.
 
 ```python
 >>> sum(0.1 for i in range(10))
@@ -296,7 +296,7 @@ array([[0., 0., 0., 0.],
        [0., 0., 0., 0.],
        [0., 0., 0., 0.]])
 >>> type(g1)
-<class 'numpy.ndarray'>
+< class 'numpy.ndarray' >
 >>> g2 = np.ones(shape=(3,4), dtype=float)  # 실수 타입으로 1을 채운 3 by 4 넘파이 배열 생성
 >>> g2
 array([[1., 1., 1., 1.],
