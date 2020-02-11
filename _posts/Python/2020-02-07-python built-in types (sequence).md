@@ -3,6 +3,320 @@ layout: post
 title: python built-in types (sequence)
 category: Python
 use_math: true
-tag: [string, list, tuple]
+tag: [string, list, tuple, byte, byte array]
 show_sidebar: false
 ---
+
+
+
+## Sequence Types
+
+파이썬 sequence types에는 문자열(string), 튜플(tuple), 리스트(list), 바이트(byte), 바이트배열(byte array)이 있다. 참고로 표준 라이브러리인 collections 모듈에는 데이터의 type name과 field name을 정해서 튜플의 각 포지션에 의미를 부여할 수 있는 네임드 튜플이 존재한다.
+
+```python
+# 각 시퀀스 데이터 타입의 생성
+>>> s = ""
+>>> type(s)
+"<class 'str'>"
+>>> t = ()
+>>> type(t)
+"<class 'tuple'>"
+>>> l = []
+>>> type(l)
+"<class 'list'>"
+>>> b = bytes([])
+>>> type(b)
+"<class 'bytes'>"
+>>> ba = bytearray(b"")
+>>> type(ba)
+"<class 'bytearray'>"
+
+>>> from collections import namedtuple
+# 네임드 튜플 생성 namedtuple(typename, fieldname)
+>>> Point = namedtuple('Point', ['x', 'y'])
+>>> type(p)
+"<class '__main__.Point'>"
+>>> p = Point(11,22)
+>>> p
+Point(x=11, y=22)
+>>> p[0]
+11
+>>> p.x + p.y
+33
+>>> x, y = p
+>>> x, y
+(11, 22)
+```
+
+<br/>
+
+##### 시퀀스 타입의 속성
+
+1. 맴버십(membership) 연산 가능: in 키워드 사용
+2. 크기(size) 함수 사용가능: len(seq)
+3. 슬라이싱(slicing) 가능: seq[n:m]
+4. 반복(iterability) 가능: 반복문에 있는 데이터를 순회할 수 있음
+
+<br/>
+
+<br/>
+
+##### 문자열, 튜플, 바이트는 불변 객체 타입이며 리스트, 바이트배열은 가변 객체 타입이다.
+
+일반적으로 불변 객체 타입은 복제나 비교를 위한 조작을 단순화 할 수 있으며 성능개선에도 도움을 줄 수 있기 때문에 가변 객체 타입보다 효율적이다. 하지만 객체가 변경 가능한 데이터를 많이 가지고 있는 경우에는 가변 객체 타입이 적절하다.
+
+<br/>
+
+##### 가변 객체 타입의 복사는 조심해야 한다.
+
+파이썬에서 모든 변수는 객체 참조이다. 즉, 변수는 데이터 객체가 저장되어 있는 메모리 주소값을 가지고 있는다. 만약, 변수 a가 가변 타입인 리스트 객체를 참조하고 있을 때, b = a 와 같이 변수 b에 변수 a의 값을 할당하면 변수 b도 변수 a가 참조하는 리스트 객체를 참조하게 된다. 그래서 변수 b를 통해 리스트 객체의 데이터를 수정하면 변수 a로 리스트 객체를 참조했을 때 수정된 데이터를 가진 리스트를 확인할 수 있다. 이러한 복사를 **얕은 복사(shallow copy)**라 부른다.
+
+```python
+>>> a = [1, 2, 3]
+>>> b = a
+>>> id(a) == id(b)
+True
+>>> b[0] = 4
+>>> b
+[4, 2, 3]
+>>> a
+[4, 2, 3]
+```
+
+문제는 다음과 같은 상황이다. 만약, 변수 a에 원본 데이터가 있고, 원본에 손상을 주지 않고 사용하기 위해 변수 b에 원본을 복사하는 경우가 있다고 하자. 이 경우 원본 데이터가 가변 타입이라면 b = a 이렇게 사용할 수가 없다. 변수 b를 통해 데이터를 수정하면 변수 a도 동일한 곳을 참조하고 있기 때문에 원본 데이터가 손상되기 때문이다. 이를 해결하기 위해 데이터 자체를 복사하는 방법이 있는데 이것을 **깊은 복사(deep copy)**라 부른다. 깊은 복사는 copy 모듈의 deepcopy() 함수로 수행할 수 있다.
+
+```python
+>>> from copy import deepcopy
+
+>>> a = [1, 2, 3]
+>>> b = deepcopy(a)
+# '=='는 변수가 참조하는 객체의 값(value)이 같으면 True
+# 그래서 서로 다른 객체를 참조해도 객체가 갖는 값이 같다면 True가 됨
+>>> a == b
+True
+>>> a is b  # 'is'는 변수가 같은 객체(object)를 참조하고 있으면 True
+False
+>>> b.append(4)
+>>> b
+[1, 2, 3, 4]
+>>> a
+[1, 2, 3]
+```
+
+<br/>
+
+<br/>
+
+##### 슬라이싱 연산
+
+시퀀스 객체의 일부를 가져오는 것을 뜻한다. 연산자의 구문은 다음과 같다.
+
+seq[시작]
+
+seq[시작 : 끝]
+
+seq[시작 : 끝 : 스텝]
+
+```python
+>>> seq = "abcde fghij"
+>>> seq[1]
+'b'
+>>> seq[2:8]
+'cde fg'
+>>> seq[1:11:2]
+'bd gi'
+>>> seq[-1]  # index가 음수일 경우 오른쪽 끝에서부터 읽는다.
+'j'
+>>> seq[-2:]
+'ij'
+```
+
+<br/>
+
+<br/>
+
+##### 문자열(string)
+
+파이썬의 모든 객체에는 두 가지 출력 형식이 있다. 문자열(string) 형식은 사람을 위해서 설계되었고, 표현(representational) 형식은 파이썬 인터프리터에서 사용하는 문자열로 보통 디버깅할 때 사용된다. 파이썬 클래스를 작성할 때에는 문자열 표현을 정의하는 것이 중요하다.
+
+<br/>
+
+파이썬3부터는 모든 문자열이 일반적인 바이트가 아닌 유니코드(unicode)이다 (유니코드는 전 세계 언어의 문자를 정의하기 위한 국제 표준 코드로서 공백, 특수문자, 수학 및 기타 분야의 기호들도 포함한다). 문자열 앞에 u를 붙이면 유니코드 문자열을 생성할 수 있다.
+
+```python
+>>> u"안녕\u0020세계야 !"  # \u0020은 인덱스가 0x0020인 유니코드의 문자이다. 여기서는 공백문자임. 
+'안녕 세계야 !'
+```
+
+<br/>
+
+##### 문자열 함수
+
+```python
+# a.join(b): 리스트 b의 모든 문자열을 문자열 a를 이용하여 하나의 문자열로 결합
+>>> b = ['버거킹', '맥날', 'KFC']
+>>> '_'.join(b)
+'버거킹_맥날_KFC'
+
+"""
+a.ljust(width, fillchar): 문자열 a를 맨 왼쪽으로 보내고 width에서 문자열 a의 길이를 제외한 만큼을 fillchar로 채운다.
+a.rjust(width, fillchar): 문자열 a를 맨 오른쪽으로 보내고 나머지는 ljust와 동일
+"""
+>>> nation = "korea"
+>>> nation.ljust(10, '!')
+'korea!!!!!'
+>>> nation.rjust(10, '@')
+'@@@@@korea'
+
+# a.format(): 문자열 a에 변수를 추가하거나 형식화하는 데 사용
+>>> "{0}! {1}".format("nice", "korea")
+'nice! korea'
+>>> "name: {who}, age: {age}".format(who="Park", age=30)
+'name: Park, age: 30'
+>>> "name: {who}, age: {0}".format(30, who="Park")
+'name: Park, age: 30'
+
+# format() 함수는 3개의 지정자를 갖는다.
+# 지정자 s는 문자열(str) 형식, r은 표현(repr) 형식, a는 아스키코드(ascii) 형식
+>>> from decimal import Decimal
+>>> "{0} / {0!s} / {0!r} / {0!a}".format(Decimal("99.9"))
+"99.9 / 99.9 / Decimal('99.9') / Decimal('99.9')"
+
+# a.splitlines(): 문자열 a를, 개행문자를 기준으로 분리하여 리스트의 형태로 리턴한다.
+>>> seq = "hello\npython"
+>>> seq.splitlines()
+['hello', 'python']
+
+"""
+a.split(t, n): 문자열 a를, 문자열 t를 기준으로 정수 n번만큼 분리하여 리스트의 형태로 리턴한다.
+n이 지정되지 않으면 최대한 많이 분리하며, t를 지정하지 않으면 공백문자를 기준으로 분리한다.
+a.rsplit(t, n): 문자열을 오른쪽에서부터 분리하기 시작한다.
+"""
+>>> seq = "seoul@suwon@daejeon"
+>>> seq.split('@')
+['seoul', 'suwon', 'daejeon']
+>>> seq.rsplit('@', 1)
+['seoul@suwon', 'daejeon']
+
+# a.strip(b): 문자열 a 앞뒤의 문자열 b를 제거한다. 문자열 b를 지정하지 않으면 공백문자를 제거한다.
+# a.lstrip(b): 문자열 a의 앞쪽에 있는 문자열 b를 제거한다. 문자열 b를 지정하지 않으면 공백문자를 제거
+# a.rstrip(b): 문자열 a의 뒤쪽에 있는 문자열 b를 제거한다. 문자열 b를 지정하지 않으면 공백문자를 제거
+>>> seq = "@@suwon@@"
+>>> seq.strip('@')
+'suwon'
+>>> seq.lstrip('@')
+'suwon@@'
+>>> seq.rstrip('@')
+'@@suwon'
+
+# strip()으로 문자열 앞뒤의 공백문자, 특수문자, 숫자 등을 한번에 제거할 수 있다.
+>>> import string
+>>> strip = string.whitespace + string.punctuation + string.digits + "\"" + "\'"
+>>> seq = "@3\" %suwon!!\' 5"
+>>> seq.strip(strip)
+'suwon'
+
+# a.swapcase(): 문자열 a의 대소문자를 반전하여 복사본을 리턴
+# a.capitalize(): 문자열 a의 첫 글자를 대문자로 바꾸고 복사본을 리턴
+# a.lower(): 문자열 a 전체를 소문자로 바꾸고 복사본을 리턴
+# a.upper(): 문자열 a 전체를 대문자로 바꾸고 복사본을 리턴
+>>> seq = "Seoul and Suwon"
+>>> seq.swapcase()
+'sEOUL AND sUWON'
+>>> seq.capitalize()
+'Seoul and suwon'
+>>> seq.lower()
+'seoul and suwon'
+>>> seq.upper()
+'SEOUL AND SUWON'
+
+"""
+a.index(sub, start, end): 문자열 a의 start에서 end 범위 내에서 문자열 sub를 찾아 그 index를 리턴
+a.find(sub, start, end): index()와 기능 동일
+start, end 인자를 생략할 경우 문자열 전체에 대해서 탐색을 수행
+index()는 탐색을 실패하면 ValueError를 발생시키고, find()는 -1을 리턴
+rindex(), rfind(): 문자열의 맨 오른쪽에서부터 탐색을 시작
+"""
+>>> seq = "Seoul and Suwon"
+>>> seq.index('and')
+6
+>>> seq.find('and')
+6
+
+# a.count(sub, start, end): 문자열 a의 start에서 end 범위 내에서 문자열 sub이 나온 횟수를 리턴
+>>> seq = "suwon suwon suwon"
+>>> seq.count('suwon')
+3
+
+"""
+a.replace(old, new, maxreplace): 문자열 a에서 문자열 old를 문자열 new로 maxreplace 만큼 변경하고 복사본을 리턴
+maxreplace를 지정하지 않으면 모든 old를 new로 변경
+"""
+>>> seq = "suwon suwon suwon"
+>>> seq.replace('suwon', 'wow', 2)
+'wow wow suwon'
+```
+
+<br/>
+
+##### f-strings
+
+기존의 %나 .format 방식에 비해 간결하고 직관적이며 속도도 빠른 문자열 표현 방식이다. 문자열 앞에 접두사 f를 붙여 사용하며, 파이썬 3.6부터 이용 가능하다.
+
+```python
+>>> name = "Park"
+>>> f"He's name is {name!r}."
+"He's name is 'Park'."
+>>> f"He's name is {repr(name)}."
+"He's name is 'Park'."
+>>> from decimal import Decimal
+>>> width = 10
+>>> precision = 4
+>>> value = Decimal("12.34567")
+>>> f"result: {value:{width}.{precision}}"
+'result:      12.35'
+>>> from datetime import datetime
+>>> today = datetime(year=2020, month=1, day=15)
+>>> f"{today:%B %d, %Y}"
+'January 15, 2020'
+>>> number = 1024
+>>> f"{number:#0x}"
+'0x400'
+```
+
+<br/>
+
+<br/>
+
+##### 튜플(tuple)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
