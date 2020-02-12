@@ -333,17 +333,190 @@ maxreplace를 지정하지 않으면 모든 old를 new로 변경
 
 <br/>
 
-##### 튜플 언패킹
+##### 튜플 언패킹(tuple unpacking)
 
+파이썬에서 모든 반복 가능한(iterable) 객체는 시퀀스 언패킹 연산자(sequence unpacking operator) *를 사용하여 언패킹을 할 수 있다.
 
+```python
+"""
+변수 x에는 맨 앞의 값이, 변수 z에는 맨 뒤의 값이 할당되고 남은 값들은 언패킹 연산자가 붙은 변수 y에 할당된다.
+"""
+>>> x, *y, z = (1, 2, 3, 4)
+>>> x
+1
+>>> y
+[2, 3]
+>>> z
+4
+```
 
+<br/>
 
+##### 네임드 튜플(named tuple)
 
+네임드 튜플은 collections 모듈에 들어있는 **시퀀스 데이터 타입**이다. 네임드 튜플은 튜플의 항목을 인덱스 위치뿐만 아니라 field name으로도 참조할 수 있다.
 
+collections.namedtuple(*typename*, *field_names*, ***, *rename=False*, *defaults=None*, *module=None*)
 
+*typename*: 사용자가 정의하는 튜플 데이터 타입의 이름. 일반적으로 왼쪽에 할당하는 변수의 이름과 동일하게 함
 
+*field_names*: 각 항목의 이름을 지정하는 '공백으로 구분된 문자열 또는 리스트 또는 튜플'이다.
 
+```python
+>>> from collections import namedtuple
 
+# namedtuple로 Person이라는 시퀀스 데이터 타입을 생성
+>>> Person = namedtuple('Person', "name age gender")
+>>> Person = namedtuple('Person', ['name', 'age', 'gender'])
+>>> Person = namedtuple('Person', ('name', 'age', 'gender'))
+>>> type(Person)
+"<class 'type'>"
+
+# Person type의 데이터 p를 생성
+>>> p = Person(name='Park', age=30, gender='male')
+>>> p
+Person(name='Park', age=30, gender='male')
+>>> type(p)
+"<class '__main__.Person'>"
+
+# 튜플 항목에 접근
+>>> p[0]  # 인덱스로 접근
+'Park'
+>>> p.age  # field_name으로 접근
+30
+
+# 튜플과 마찬가지로 네임드 튜플도 불변형 객체 타입이다.
+>>> p.gender = 'female'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: can't set attribute
+```
+
+<br/>
+
+<br/>
+
+##### 리스트(list)
+
+여러 요소(element)들이 연속된 메모리에 순차적으로 저장되는 자료구조를 배열(array)이라 한다. 이러한 배열과 비슷한 것이 리스트이다. 즉, **파이썬의 리스트는 크기를 동적으로 조정할 수 있는 배열**이다.
+
+가변 타입인 리스트는 대괄호 [] 안에 항목을 쉼표(,)로 구분하여 표현한다. 리스트의 항목은 각기 다른 데이터 타입이어도 된다.
+
+```python
+>>> l = ['abc', 10, [1,2]]
+>>> l
+['abc', 10, [1, 2]]
+>>> type(l)
+"<class 'list'>"
+
+# 빈 리스트 생성
+>>> l = []
+>>> l = list()
+```
+
+리스트는 항목을 검색해야 하는 remove(), index(), 멤버십 테스트 in 등의 시간복잡도(time complexity)와 지정한 인덱스에 항목을 삽입한 후, 그 이후의 인덱스 항목들을 한 칸씩 뒤로 밀어야 하는 insert()의 시간복잡도가 O(n)이므로 검색이나 멤버십 테스트에서 빠른 속도를 원할 시 set이나 dictionary를 쓰는 것이 좋다.
+
+<br/>
+
+##### 리스트 함수
+
+```python
+# a.append(x): 리스트 a 끝에 항목 x를 추가
+>>> a = [1,2]
+>>> a.append(3)
+>>> a
+[1, 2, 3]
+
+# a.extend(c): 리스트 a 끝에 반복 가능한 객체 c (문자열, 리스트, 튜플)를 이어붙임
+>>> a.extend("abc")
+>>> a
+[1, 2, 3, 'a', 'b', 'c']
+>>> a.extend([4,5])
+>>> a.extend((6,7))
+>>> a
+[1, 2, 3, 'a', 'b', 'c', 4, 5, 6, 7]
+
+# a.insert(i, x): 리스트 a의 인덱스 i 위치에 항목 x를 삽입
+>>> a.insert(1,'d')
+>>> a
+[1, 'd', 2, 3, 'a', 'b', 'c', 4, 5, 6, 7]
+
+# a.remove(x): 리스트 a에서 항목 x를 제거. 항목 x가 존재하지 않으면 ValueError 발생시킴
+>>> a.remove(7)
+>>> a
+[1, 'd', 2, 3, 'a', 'b', 'c', 4, 5, 6]
+
+# a.pop(x): 리스트 a에서 인덱스가 x인 항목을 제거하고 그 항목을 리턴
+# x를 지정하지 않으면 리스트의 맨 끝 항목을 제거하고 그 항목을 리턴
+>>> a.pop(1)
+'d'
+>>> a.pop()
+6
+>>> a
+[1, 2, 3, 'a', 'b', 'c', 4, 5]
+
+"""
+del: 리스트 인덱스를 지정하여 특정 항목 또는 특정 범위의 항목들을 삭제. 변수 자체를 삭제할 수도 있음
+변수를 삭제했을 경우, 메모리에서 리스트 객체를 삭제한 것이 아니라 리스트 객체를 참조하는 것을 삭제한 것이다. 만약 리스트 객체를 참조하는 변수가 더 이상 없다면 리스트 객체에 할당된 메모리는 가비지 컬렉터(garbage collector)가 회수한다.
+"""
+>>> del a[0]
+>>> a
+[2, 3, 'a', 'b', 'c', 4, 5]
+>>> del a[1:3]
+>>> a
+[2, 'b', 'c', 4, 5]
+>>> del a
+>>> a
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'a' is not defined
+    
+# a.index(x): 리스트 a에서 항목 x의 인덱스를 리턴
+>>> a = ['a', 'b', 'c']
+>>> a.index('b')
+1
+
+# a.count(x): 리스트 a에 항목 x가 몇 개 있는지를 리턴
+>>> a = ['a', 'b', 'c', 'b']
+>>> a.count('b')
+2
+
+"""
+a.sort(key=None, reverse=False): 리스트 a의 항목을 정렬하여 그 변수 자체에 적용한다(in place).
+디폴트는 오름차순 정렬이고, 인자 reverse=True 로 지정하면 내림차순 정렬이 가능하다.
+리스트를 특정한 방식으로 정렬하고 싶다면 인자 key에 비교함수를 지정하여 준다. lambda 함수를 지정할 수도 있고, 미리 정의된 함수의 함수명을 지정하여(함수객체의 메모리주소를 넘겨주어) 함수를 참조하도록 할 수도 있다.
+"""
+>>> a = ['김씨', '최씨', '정씨', '박씨']
+>>> a.sort()
+>>> a
+['김씨', '박씨', '정씨', '최씨']
+>>> a.sort(reverse=True)
+>>> a
+['최씨', '정씨', '박씨', '김씨']
+
+# time 모듈의 strptime(string, format) 함수를 이용해서 날짜를 정렬할 수 있다.
+# strptime(string, format): 날짜를 표현하는 문자열을 format에 맞게 파싱(parsing) 하는 함수
+>>> from time import strptime
+>>> timestamp = [
+... "2018-12-12 01:17:31",
+... "2018-12-12 02:17:28",
+... "2018-11-25 07:30:35",
+... "2018-11-25 11:32:33"
+... ]
+>>> timestamp.sort(key=lambda x: strptime(x, '%Y-%m-%d %H:%M:%S')[0:6], reverse=True)
+>>> timestamp
+['2018-12-12 02:17:28', '2018-12-12 01:17:31', '2018-11-25 11:32:33', '2018-11-25 07:30:35']
+
+# a.reverse(): 리스트 a의 항목순서를 반대로하여 그 변수 자체에 적용한다(in place).
+>>> a = [1,2,3]
+>>> a.reverse()
+>>> a
+[3,2,1]
+```
+
+<br/>
+
+##### 리스트 언패킹(list unpacking)
 
 
 
