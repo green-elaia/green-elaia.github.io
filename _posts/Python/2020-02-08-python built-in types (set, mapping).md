@@ -9,6 +9,36 @@ show_sidebar: false
 
 
 
+## Set & Mapping Types
+
+set & mapping types는 시퀀스 데이터 타입과 달리 데이터를 서로 연관시키지 않고 모아두는 컨테이너(container)이다.
+
+set & mapping types는 다음의 속성을 갖는다.
+
+- 멤버십(membership) 연산 가능: in 키워드 사용
+- 크기(size) 함수 사용가능: len(object)
+- 반복(iteration) 가능: 반복문에 있는 데이터를 순회할 수 있음
+
+파이썬의 built-in set types에는 set과 frozen set이 있고, built-in mapping types에는 dictionary가 있다.
+
+<br/>
+
+<br/>
+
+##### 집합(set)
+
+set은 반복가능(iterable) 하고, 가변(mutable) 타입이며, 중복 요소가 없는 정렬되지 않은 데이터 타입이다. 인덱스 연산은 불가하고, 멤버십 테스트 및 중복 항목 제거에 사용된다.
+
+
+
+
+
+
+
+##### frozen set
+
+
+
 
 
 셋과 딕셔너리는 copy()로 깊은 복사를 할 수 있음.

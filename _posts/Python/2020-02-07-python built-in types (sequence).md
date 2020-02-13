@@ -55,7 +55,7 @@ Point(x=11, y=22)
 1. 맴버십(membership) 연산 가능: in 키워드 사용
 2. 크기(size) 함수 사용가능: len(seq)
 3. 슬라이싱(slicing) 가능: seq[n:m]
-4. 반복(iterability) 가능: 반복문에 있는 데이터를 순회할 수 있음
+4. 반복(iteration) 가능: 반복문에 있는 데이터를 순회할 수 있음
 
 <br/>
 
