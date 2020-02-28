@@ -63,6 +63,35 @@ show_sidebar: false
 
 <br/>
 
+##### 내장함수 dir(*object*)
+
+내장함수 dir()은
+
+인자가 없을 경우, 현재 local scope의 이름들을 리스트 형태로 리턴한다.
+
+인자가 있을 경우, 객체의 모든 속성(attribute)과 메소드를 리스트 형태로 리턴한다. 만약 객체가 __ dir __ () 메소드를 갖고 있다면 커스텀화한 __ dir __ () 메소드의 리턴값을 리턴한다.
+
+dir() 함수를 이용하면 모듈이 정의하는 모든 유형의 이름(모듈, 변수, 함수)을 확인할 수 있다.
+
+```python
+>>> import struct
+>>> dir()   # show the names in the module namespace  
+['__builtins__', '__name__', 'struct']
+>>> dir(struct)   # show the names in the struct module 
+['Struct', '__all__', '__builtins__', '__cached__', '__doc__', '__file__',
+ '__initializing__', '__loader__', '__name__', '__package__',
+ '_clearcache', 'calcsize', 'error', 'pack', 'pack_into',
+ 'unpack', 'unpack_from']
+>>> class Shape:
+...    def __dir__(self):
+...        return ['area', 'perimeter', 'location']
+>>> s = Shape()
+>>> dir(s)   # 커스텀화한 __dir__()의 리턴값을 리턴함.
+['area', 'location', 'perimeter']
+```
+
+<br/>
+
 <br/>
 
 ## Module & Package
@@ -155,45 +184,37 @@ import 했던 모듈이 다음번에 다시 import 될 경우, 바이트 컴파�
 
 ##### sys 모듈
 
+**sys.path**는 인터프리터가 모듈을 검색할 경로를 담고 있는 문자열 리스트다. sys.path 변수는 PYTHONPATH 환경변수나 내장된 기본값 경로로 초기화된다. sys.path 변수에 임시로 모듈 경로를 추가하여 사용할 수도 있다.
 
+```python
+>>> import sys
+>>> sys.path
+['', 'C:\\ProgramData\\Anaconda3\\python37.zip', 'C:\\ProgramData\\Anaconda3\\DLLs', 'C:\\ProgramData\\Anaconda3\\lib', 'C:\\ProgramData\\Anaconda3', 'C:\\ProgramData\\Anaconda3\\lib\\site-packages', 'C:\\ProgramData\\Anaconda3\\lib\\site-packages\\win32', 'C:\\ProgramData\\Anaconda3\\lib\\site-packages\\win32\\lib', 'C:\\ProgramData\\Anaconda3\\lib\\site-packages\\Pythonwin']
+>>> sys.path.append('임시 모듈 디렉터리 경로')
+```
 
+sys.path에 들어있는 경로를 보면 크게 '현재 작업 디렉터리', '표준 라이브러리가 있는 디렉터리', '서드파티(3rd party) 라이브러리가 있는 디렉터리'가 있음을 확인할 수 있다. 즉, 파이썬 인터프리터는 모듈을 검색할 때 **'현재 작업 디렉터리', '표준 라이브러리가 있는 디렉터리', '서드파티(3rd party) 라이브러리가 있는 디렉터리'**를 확인한다.
 
+파이썬 인터프리터는 3개의 주요 모듈검색 경로 중에 '현재 작업 디렉터리'를 항상 가장 먼저 확인한다. '표준 라이브러리가 있는 디렉터리'와 '서드파티(3rd party) 라이브러리가 있는 디렉터리'는 정해져있는 순서가 없어서 매번 달라질 수 있다.
 
+ **sys.argv 변수**는 명령줄에 전달된 인수를 프로그램 내에서 사용할 수 있도록 한다.
 
+```python
+# sys_ex.py
+import sys
 
+def main():
+    for arg in sys.argv[1:]:
+        print(arg)
 
+if __name__ == "__main__":
+    main()
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
+$ python sys_ex.py arg1 arg2
+arg1
+arg2
+```
 
 
