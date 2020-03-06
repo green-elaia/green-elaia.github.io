@@ -7,16 +7,16 @@
     - name: Archives
       link: /blog/
       items:
-        - name: Algorithm & Data Structure
-          link: /AlgorithmDataStructure/
+        - name: Python
+          link: /Python/
         - name: Artificial Intelligence
           link: /AI/
+        - name: Algorithm & Data Structure
+          link: /AlgorithmDataStructure/
         - name: Linear Algebra
           link: /LinearAlgebra/
         - name: Probability & Statistics
           link: /ProbabilityStatistics/
-        - name: Python
-          link: /Python/
         - name: Web
           link: /Web/
         - name: Seminar & Conference
