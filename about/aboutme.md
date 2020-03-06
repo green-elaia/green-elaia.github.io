@@ -3,12 +3,17 @@ layout: post
 title: Park Young Jun
 subtitle: Machine Learning Engineer
 show_sidebar: false
-date: 2019-11-18
+date: 2020-03-06
 author: YoungJun Park
 callouts: home_callouts
 ---
 
-## 개인사진
+
+
+![증명](/assets/img/pyj.jpg){: width="15%" height="15%"}{: .center}
+
+
+
 ## e-mail
 
 
