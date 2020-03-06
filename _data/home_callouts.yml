@@ -1,12 +1,22 @@
 style: is-light
 height: is-small
 items:
-  - title: Multiple page layouts
-    subtitle: Including sidebar, menubar, tabs and callouts
-    icon: fa-copy
-  - title: Blog included
-    subtitle: Layouts for blog and post pages included
-    icon: fa-mail-bulk
-  - title: Works with GitHub Pages
-    subtitle: Quick and easy to get started
+  - title: Curriculum Vitae
+    subtitle: Including Education, Work Experiments, Technical Skills and so on
+    icon: fa-brain
+    call_to_action_name: Curriculum Vitae
+    call_to_action_link: /about/aboutme/
+
+  - title: My Learning Archives
+    subtitle: Record what I have learned
+    icon: fa-archive
+    call_to_action_name: My Archives
+    call_to_action_link: /blog/
+
+  - title: My GitHub
+    subtitle: Record the project I have carried out
     icon: fab fa-github
+    call_to_action_name: My GitHub
+    call_to_action_link: https://github.com/green-elaia?tab=repositories
+
+  # fa-archive, fa-file, fa-brain, fa-folder, fa-copy, fa-mail-bulk
