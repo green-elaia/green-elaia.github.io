@@ -91,7 +91,7 @@ callouts: home_callouts
 
 ## Projects
 
-- Genetic Algorithm을 활용한 로또 번호 예측기, 2020.02 ~
+- <!--Genetic Algorithm을 활용한 로또 번호 예측기, 2020.02 ~ -->
 - KOCO VQA: Korean Vision Question Answering with Advanced Counting, 2019.07 ~ 2019.11
 - 치아의 depth image와 GAN을 활용한 치아복원 연구, 2019.07 ~ 2019.08
 - 유튜브 데이터 마이닝을 통한 영상 소비자들의 관심주제 분석: 유아동 콘텐츠의 사례 (댓글 감성분석 활용), 2019.03 ~ 2019.06
