@@ -93,7 +93,7 @@ callouts: home_callouts
 
 - <!--Genetic Algorithm을 활용한 로또 번호 예측기, 2020.02 ~ -->
 - KOCO VQA: Korean Vision Question Answering with Advanced Counting, 2019.07 ~ 2019.11
-- 치아의 depth image와 GAN을 활용한 치아복원 연구, 2019.07 ~ 2019.08
+- 치아의 depth image와 GAN을 활용한 치아복원 연구, 2019.07 ~ 2019.08 <!--논문구현하기-->
 - 유튜브 데이터 마이닝을 통한 영상 소비자들의 관심주제 분석: 유아동 콘텐츠의 사례 (댓글 감성분석 활용), 2019.03 ~ 2019.06
 - 팀프로젝트 관리 프로그램, 2019.05 ~ 2019.06
 - 공장 FMB(Flexible Monitoring Board) system 설계와 구현, 2018.09 ~ 2018.12
@@ -104,7 +104,6 @@ callouts: home_callouts
 - 수강후기 게시판 프로그램, 2017.09 ~ 2017.12
 - 공학설계 프로젝트: 압축밀봉 쓰레기통, 2017.03 ~ 2017.06
 - TSP(Traveling Salesperson Problem)를 이용한 최적의 어린이대공원 가족나들이 코스, 2017.05 ~ 2017.06
-- 간단한 미사일 시뮬레이션 프로그램, 2017.04 ~ 2017.06
 
 <br/>
 
